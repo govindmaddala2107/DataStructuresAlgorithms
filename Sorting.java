@@ -75,12 +75,36 @@ public class Sorting {
         }
     }
 
+    // [10, 9, 8]
+
+    public void insertionSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int temp = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > temp) {
+                // arr[j] > temp ==> 10, | 1, 5, 3, 9, 2, 6, 8, 0, -1, 1 arr[j] = 10 and temp =
+                // 1
+                // so replace a[j+1] i.e 1st index with 0th index and now 1 is placed its
+                // position until
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+        }
+        for (int each : arr) {
+            System.out.print(each + " ");
+        }
+    }
+
     public static void main(String[] args) {
         int[] ss = { 9, 13, 5, 3, 7, 2, 10, -1, 5, -100, 100 };
         int[] bs = { 9, 13, 5, 3, 7, 2, 10, -1, 5, -100, 100 };
+        int[] is = { 9, 13, 5, 3, 7, 2, 10, -1, 5, -100, 100 };
         Sorting sort = new Sorting();
         sort.SelectionSorting(ss);
         System.out.println();
         sort.bubbleSorting(bs);
+        System.out.println();
+        sort.insertionSort(is);
     }
 }
